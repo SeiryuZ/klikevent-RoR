@@ -7,6 +7,7 @@ gem 'rails', '3.2.3'
 
 gem 'pg'
 gem 'devise'
+gem "omniauth-facebook"
 gem 'haml-rails', '>= 0.3.4'
 gem 'thin' 
 
