@@ -10,6 +10,7 @@ gem 'devise'
 gem "omniauth-facebook"
 gem 'haml-rails', '>= 0.3.4'
 gem 'thin' 
+gem 'valid_email'
 
 
 # Gems used only for assets and not required

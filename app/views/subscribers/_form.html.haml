@@ -5,6 +5,7 @@
       %ul
         - @subscriber.errors.full_messages.each do |msg|
           %li= msg
-
+  .field
+    = f.text_field :email, :placeholder => "Your Email Here", :class => "subscribe-input", :id => "input01", :size=> 30
   .actions
     = f.submit 'Save'

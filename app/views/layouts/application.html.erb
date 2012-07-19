@@ -40,15 +40,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="#">KlikEvent</a>
+                <%= link_to "Klikevent", root_path, :class=>"brand" %>
+
                 <span class="divider"></span>
       
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="add-border-left "><a href="#" title="View the Hottest Event around!"><i class="icon-home icon-white "></i>Hot Event</a></li>
-                        <li class="add-border-left "><a href="#" >Today's Event</a></li>
+                        <li class="add-border-left ">
+                          <a href="#" title="View the Hottest Event around!"><i class="icon-home icon-white "></i>Hot Event</a></li>
+                        <li class="add-border-left "><a href="/hot" >Today's Event</a></li>
                         <li class="add-border-left  "><a id="nav" href="#" title="Got information regarding events? Contact Us!" >Tips &amp; Feedback</a></li>
-                        <li class="add-border-left add-border-right "><a id="nav" href="#" title="Subscribe to Us!" >Subscribe</a></li>
+                        <li class="add-border-left add-border-right "><%= link_to "Subscribe", new_subscriber_path, :id => "nav", :titile=>"Subscribe to Us!"%></li>
                     </ul>
                     <ul class="nav pull-right">
                         <li class="dropdown ">
@@ -74,6 +76,7 @@
 
     <div class="container main-container ">
         <div class="row add-min-height">
+      <% if flash[:success] %><div class="alert alert-success"><button class="close" data-dismiss="alert">×</button><%= flash[:success] %></div><% end %>
       <% if notice %><div class="alert"><button class="close" data-dismiss="alert">×</button><%= notice %></div><% end %>
       <% if alert %><div class="alert"><button class="close" data-dismiss="alert">×</button><%= alert %></div> <% end %>
 <%= yield %>
