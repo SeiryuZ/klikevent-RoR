@@ -7,14 +7,101 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	   <% if user_signed_in? %>
-	    <%= image_tag(current_user.image)%> <%= current_user.name %>,  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-	   <% else %>
-	   <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-	   <% end %>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+	   
+
+
+       <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">KlikEvent</a>
+                <span class="divider"></span>
+      
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="add-border-left "><a href="#" title="View the Hottest Event around!"><i class="icon-home icon-white "></i>Hot Event</a></li>
+                        <li class="add-border-left "><a href="#" >Today's Event</a></li>
+                        <li class="add-border-left  "><a id="nav" href="#" title="Got information regarding events? Contact Us!" >Tips &amp; Feedback</a></li>
+                        <li class="add-border-left add-border-right "><a id="nav" href="#" title="Subscribe to Us!" >Subscribe</a></li>
+                    </ul>
+                    <ul class="nav pull-right">
+                        <li class="dropdown ">
+                          <% if user_signed_in? %>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <%= image_tag(current_user.image, :size => "40x40")%> <%= current_user.name %>
+                            <b class=" caret caret-custom"></b>
+                          </a>
+                            <ul class="dropdown-menu">
+                                <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>    </li>
+                            </ul>
+           
+     <% else %>
+     <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+     <% end %>
+                            
+                        </li>
+                    </ul>
+                </div><!-- /.nav-collapse -->
+            </div><!-- /.container -->
+        </div><!-- /.navbar-inner -->
+    </div><!-- /.navbar -->
+
+    <div class="container main-container ">
+        <div class="row add-min-height">
+      <% if notice %><div class="alert"><button class="close" data-dismiss="alert">×</button><%= notice %></div><% end %>
+      <% if alert %><div class="alert"><button class="close" data-dismiss="alert">×</button><%= alert %></div> <% end %>
 <%= yield %>
+      
+        </div>
+          <hr/>
+      <div class="row text-left">
+          <div class="span3">
+              <p><strong>Categories</strong><p>
+              <a href="#"><p>Paid</p></a>
+              <a href="#"><p>Free</p></a>
+              <a href="#"><p>Day</p></a>
+              <a href="#"><p>Night</p></a>
+              <a href="#"><p>Art &amp; Hobbies</p></a>
+              <a href="#"><p>Exhibition</p></a>
+              <a href="#"><p>Education</p></a>
+              <a href="#"><p>Others</p></a>
+          </div>
+          <div class="span3">
+              <p><strong>About</strong><p>
+              <a href="#"><p>About</p></a>
+              <a href="#"><p>Contact Us</p></a>
+              <p>Terms and Condition</p>
+          </div>
+          <div class="span3">
+              <p><strong>Newsletter</strong><p>
+                  <form method="POST" action="#">
+                  <p><input type="text" name="email" placeholder="Your Email here" class=""></p>
+                  <p><button class="btn-small btn-primary">Subscribe</button></p>
+                  </form>
+          </div>
+          <div class="span3 ">
+              <p><strong>Follow Us!</strong><p>
+              <p class="">
+                  <a href="https://twitter.com/KlikeventID" class="twitter-follow-button" data-show-count="true" data-size="large">Follow @KlikEventID</a>
+                  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                  </script>
+              </p>
+
+              <p class="">
+                  <div class="fb-like" data-href="http://www.facebook.com/KlikEvent" data-send="true" data-width="220" data-show-faces="false"></div>
+              </p>
+          </div>
+      </div>
+      <hr/>
+      <div class="section partners">
+          <strong>Partners</strong>
+      </div>
+
+    </div>
 
 </body>
 </html>
