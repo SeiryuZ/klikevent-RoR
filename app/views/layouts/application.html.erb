@@ -103,10 +103,17 @@
           </div>
           <div class="span3">
               <p><strong>Newsletter</strong><p>
-                  <form method="POST" action="#">
-                  <p><input type="text" name="email" placeholder="Your Email here" class=""></p>
-                  <p><button class="btn-small btn-primary">Subscribe</button></p>
+                <form accept-charset="UTF-8" action="/subscribers" class="new_subscriber" id="new_subscriber" method="post">
+                  <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="VxHXTiTacECEpDffCvPuJSd0npdcXfqvbF7irKgj3EU="></div>
+
+                    <div class="field">
+                      <p><input type="text" id="input01" name="subscriber[email]" placeholder="Your Email here" class=""></p>
+                    </div>
+                    <div class="actions">
+                      <input name="commit" class="btn-small btn-primary" type="submit" value="Subscribe">
+                    </div>
                   </form>
+
           </div>
           <div class="span3 ">
               <p><strong>Follow Us!</strong><p>
