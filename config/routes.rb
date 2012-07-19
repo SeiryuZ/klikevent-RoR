@@ -1,5 +1,7 @@
 Klikevent::Application.routes.draw do
 
+  resources :subscribers
+
   resources :events
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
