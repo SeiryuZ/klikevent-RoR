@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Nama:
+  = @event.nama
+%p
+  %b Lokasi:
+  = @event.lokasi
+%p
+  %b Kategori:
+  = @event.kategori_id
+%p
+  %b Waktu:
+  = @event.waktu_id
+%p
+  %b Deskripsi pendek:
+  = @event.deskripsi_pendek
+%p
+  %b Deskripsi:
+  = @event.deskripsi
+
+= link_to 'Edit', edit_event_path(@event)
+\|
+= link_to 'Back', events_path

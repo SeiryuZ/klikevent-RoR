@@ -1,0 +1,29 @@
+%h1 Listing events
+
+%table
+  %tr
+    %th Nama
+    %th Lokasi
+    %th Kategori
+    %th Waktu
+    %th Deskripsi pendek
+    %th Deskripsi
+    %th
+    %th
+    %th
+
+  - @events.each do |event|
+    %tr
+      %td= event.nama
+      %td= event.lokasi
+      %td= event.kategori_id
+      %td= event.waktu_id
+      %td= event.deskripsi_pendek
+      %td= event.deskripsi
+      %td= link_to 'Show', event
+      %td= link_to 'Edit', edit_event_path(event)
+      %td= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Event', new_event_path

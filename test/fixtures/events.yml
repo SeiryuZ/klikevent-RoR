@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nama: MyText
+  lokasi: MyText
+  kategori_id: 
+  waktu_id: 
+  deskripsi_pendek: MyText
+  deskripsi: MyText
+
+two:
+  nama: MyText
+  lokasi: MyText
+  kategori_id: 
+  waktu_id: 
+  deskripsi_pendek: MyText
+  deskripsi: MyText
