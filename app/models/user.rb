@@ -7,14 +7,16 @@ class User < ActiveRecord::Base
   devise :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :image
   attr_accessible :provider, :uid
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  	image =  auth.info.image
   	user = User.where(:provider => auth.provider, :uid => auth.uid).first
   	unless user
     	user = User.create(name:auth.extra.raw_info.name,
+    					 image:auth.info.image,
                          provider:auth.provider,
                          uid:auth.uid,
                          email:auth.info.email,
