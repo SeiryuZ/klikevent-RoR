@@ -60,10 +60,11 @@ ActiveRecord::Schema.define(:version => 20120721192002) do
   create_table "events", :force => true do |t|
     t.text     "nama"
     t.text     "lokasi"
-    t.integer  "kategori_id"
-    t.integer  "waktu_id"
     t.text     "deskripsi_pendek"
     t.text     "deskripsi"
+    t.text     "further_info"
+    t.boolean  "hot"
+    t.boolean  "published"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
     t.string   "cover_image_file_name"

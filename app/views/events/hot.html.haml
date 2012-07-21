@@ -1,0 +1,31 @@
+%h1 Hot Event
+
+- @events.each do |event|
+  .row.add-bottom
+    .span12
+      .row
+        .span6
+          = image_tag event.cover_image.url, :class => "image"
+        .span6
+          .row
+            %a{:href=> event_path(event)}
+              %h1.add-bottom 
+                = event.nama
+          .row
+            .span6.text-right.category-bar
+              - event.categories.each do |key, value|
+                .category-bar-item{:class => key.name, :title => key.name}
+                  &nbsp;
+          .row
+            %h3.description
+              - event.event_times.each do |event_time|
+                = event_time.start.to_s(:short) << " - "
+                = event_time.end.to_s(:short)
+                %br
+              = raw event.deskripsi_pendek
+          .row
+            .span6.text-right
+              %a{:href=> event_path(event), :class=>"btn btn-xxlarge btn-primary"}
+                See Details
+  - unless event == @events.last
+    %hr

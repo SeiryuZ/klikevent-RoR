@@ -2,6 +2,9 @@ Klikevent::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
 
+
+  match "/hot" => "events#hot"
+
   resources :subscribers
 
   resources :events

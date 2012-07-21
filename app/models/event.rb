@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :deskripsi, :deskripsi_pendek, :kategori_id, :lokasi, :nama, :waktu_id, :cover_image
+  attr_accessible :deskripsi, :deskripsi_pendek, :lokasi, :nama, :cover_image, :hot, :published, :further_info
 
   has_many :categories, :through => :event_categories
   has_many :event_categories

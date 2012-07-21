@@ -1,4 +1,18 @@
 class EventsController < ApplicationController
+  
+  def hot
+    @events = []
+    @events << Event.find_by_hot(true, :limit => 5)
+    
+    total = @events.count
+
+    if total < 5 
+      remaining = 5 - total
+      @events << Event.find_by_hot(false, :limit => 5)
+    end
+  end
+
+
   # GET /events
   # GET /events.json
   def index
@@ -25,6 +39,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +58,8 @@ class EventsController < ApplicationController
    
 
     @event = Event.new(params[:event])
+    @event.hot = false
+    @event.published = false
     @category = params[:category][:category_id]
     @start = params[:start_date]
     @end =  params[:end_date]

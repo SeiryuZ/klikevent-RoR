@@ -3,10 +3,11 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.text :nama
       t.text :lokasi
-      t.integer :kategori_id
-      t.integer :waktu_id
       t.text :deskripsi_pendek
       t.text :deskripsi
+      t.text :further_info
+      t.boolean :hot
+      t.boolean :published
 
       t.timestamps
     end
