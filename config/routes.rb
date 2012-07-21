@@ -1,5 +1,7 @@
 Klikevent::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   resources :subscribers
 
   resources :events
@@ -8,7 +10,6 @@ Klikevent::Application.routes.draw do
 
 
   root :to => "events#index"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

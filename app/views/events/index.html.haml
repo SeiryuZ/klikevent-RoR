@@ -18,8 +18,8 @@
       %td= event.lokasi
       %td= event.kategori_id
       %td= event.waktu_id
-      %td= event.deskripsi_pendek
-      %td= event.deskripsi
+      %td= raw event.deskripsi_pendek
+      %td= raw event.deskripsi
       %td= link_to 'Show', event
       %td= link_to 'Edit', edit_event_path(event)
       %td= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete

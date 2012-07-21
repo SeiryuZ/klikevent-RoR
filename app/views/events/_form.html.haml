@@ -20,10 +20,10 @@
     = f.text_field :waktu_id
   .field
     = f.label :deskripsi_pendek
-    = f.text_area :deskripsi_pendek
+    = cktext_area_tag("event_deskripsi_pendek", "", :input_html => {:class => "deskripsi_pendek", :name => "event[deskripsi_pendek]"})
   .field
     = f.label :deskripsi
-    = f.text_area :deskripsi
+    = cktext_area_tag("event_deskripsi", "", :input_html => {:class => "deskripsi", :name => "event[deskripsi]"})
 
   .field
     = f.label :category

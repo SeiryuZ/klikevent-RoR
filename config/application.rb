@@ -33,6 +33,8 @@ module Klikevent
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    #ckeditor
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
