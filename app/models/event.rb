@@ -10,6 +10,6 @@ class Event < ActiveRecord::Base
   has_attached_file :cover_image,
     :storage => :s3, 
     :s3_credentials => "#{Rails.root}/config/s3.yml",
-    :path => "events/:id/cover/:id.:extension",
+    :path => "events/:id/cover.:extension",
     :url  => ":s3_sg_url"
 end
