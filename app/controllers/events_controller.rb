@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   
   def hot
+
     @events = []
     @events << Event.find_by_hot(true, :limit => 5)
     
@@ -9,6 +10,47 @@ class EventsController < ApplicationController
     if total < 5 
       remaining = 5 - total
       @events << Event.find_by_hot(false, :limit => 5)
+    end
+  end
+
+  def today 
+    @date = DateTime.now
+    prevDate = @date - 1.day
+    nextDate = @date + 1.day
+    @prevDateLink = "/date/"<<prevDate.day.to_s<<"/"<<prevDate.month.to_s<<"/"<<prevDate.year.to_s
+    @nextDateLink = "/date/"<<nextDate.day.to_s<<"/"<<nextDate.month.to_s<<"/"<<nextDate.year.to_s
+    eventtimes= EventTime.where('start BETWEEN ? AND ?',  @date.beginning_of_day, @date.end_of_day).all
+    @events = []
+
+    eventtimes.each do |et|
+      et.events.each do |e|
+        @events << e
+      end
+    end
+
+
+    #remove duplicate
+    @events = @events.uniq
+
+  end
+
+  def date
+    @date = DateTime.new(params[:year].to_i, params[:month].to_i, params[:date].to_i)
+    prevDate = @date - 1.day
+    nextDate = @date + 1.day
+    @prevDateLink = "/date/"<<prevDate.day.to_s<<"/"<<prevDate.month.to_s<<"/"<<prevDate.year.to_s
+    @nextDateLink = "/date/"<<nextDate.day.to_s<<"/"<<nextDate.month.to_s<<"/"<<nextDate.year.to_s
+    eventtimes= EventTime.where('start BETWEEN ? AND ?', @date.beginning_of_day, @date.end_of_day).all
+    @events = []
+    eventtimes.each do |et|
+      et.events.each do |e|
+        @events << e
+      end
+    end
+
+    #remove duplicate
+    if @events
+      @events = @events.uniq
     end
   end
 

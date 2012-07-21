@@ -1,5 +1,5 @@
-%h1 Hot Event
-
+%h1.add-bottom Hot Event
+%hr.add-bottom
 - @events.each do |event|
   .row.add-bottom
     .span12
@@ -25,7 +25,7 @@
               = raw event.deskripsi_pendek
           .row
             .span6.text-right
-              %a{:href=> event_path(event), :class=>"btn btn-xxlarge btn-primary"}
+              %a{:href=> event_path(event), :class=>"btn btn-large btn-primary"}
                 See Details
   - unless event == @events.last
     %hr
