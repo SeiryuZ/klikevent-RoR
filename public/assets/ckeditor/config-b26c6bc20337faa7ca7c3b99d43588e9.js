@@ -1,0 +1,1 @@
+CKEDITOR.config.forcePasteAsPlainText=!0,CKEDITOR.config.removeDialogTabs="link:upload;image:Upload";

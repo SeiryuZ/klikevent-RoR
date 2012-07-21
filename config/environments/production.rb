@@ -21,7 +21,7 @@ Klikevent::Application.configure do
   config.assets.digest = true
 
   config.serve_static_assets = true
-
+  config.assets.precompile += ['ckeditor/*'] 
 
   #devise setup
   config.action_mailer.default_url_options = { :host => 'www.klikevent.com' }
