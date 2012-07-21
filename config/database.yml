@@ -52,5 +52,7 @@ production:
   encoding: unicode
   database: klikevent_production
   pool: 5
-  username: klikevent
-  password:
+  username: steven
+  password: p@55w0rd
+  host: localhost
+  port: 5432
