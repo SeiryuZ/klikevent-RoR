@@ -1,19 +1,65 @@
-%p#notice= notice
+.row
+  .span12
+    %h1
+      = @event.nama
 
-%p
-  %b Nama:
-  = @event.nama
-%p
-  %b Lokasi:
-  = @event.lokasi
+.row
+  .span12
+    .tabbable
+      %ul.nav.nav-tabs
+        %li.active.other
+          %a{:href=>"#overview", :"data-toggle"=>"tab"}
+            Overview
+        %li.other
+          %a{:href=>"#images", :"data-toggle"=>"tab"}
+            Gallery
 
-%p
-  %b Deskripsi pendek:
-  = @event.deskripsi_pendek
-%p
-  %b Deskripsi:
-  = @event.deskripsi
 
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+.row.add-min-height.add-bottom.text-left
+  .span4
+    .row.add-bottom
+      .span4
+        %a{:"data-toggle"=>"modal", :href=>"#windowTitleDialog"}
+          = image_tag @event.cover_image.url, :class => "image"
+    .row
+      .span4.text-center
+  .span8
+    .tab-content
+      .tab-pane.active{:id=>"overview"}
+        .row
+          .span8
+            %strong
+              Tanggal: 
+              %br
+            - @event.event_times.each do |event_time|
+              = event_time.start.to_s(:short) << " - "
+              = event_time.end.to_s(:short)
+              %br
+        %hr
+        .row
+          .span8
+            %strong
+              Lokasi : 
+              %br
+              = @event.lokasi
+        %hr
+        .row
+          .span8
+            %strong
+              Deskripsi : 
+              = raw @event.deskripsi
+        %hr
+        .row
+          .span8
+            %strong
+              Further Info : 
+              = raw @event.further_info
+      .tab-pane{:id=>"images"}
+
+
+.modal{:id=>"windowTitleDialog", :style =>"display: none;" }
+  .modal-header
+    %a.close{:href => "#" , :"data-dismiss"=>"modal"}
+      x
+    %a.modal-body
+      = image_tag @event.cover_image.url, :class => "image"
