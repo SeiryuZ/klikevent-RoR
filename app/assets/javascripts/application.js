@@ -14,3 +14,22 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+var newtime ="";
+
+$(document).ready(function() {
+  newtime = $('.eventdatetime').clone().html();
+});
+$('#add-time').live('click', function() {
+	
+	newtime = newtime.replace(/start_date\[([\d+])\]/g, function(match, number) {
+       return "start_date["+(parseInt(number)+1)+"]";
+	});
+	newtime = newtime.replace(/end_date\[([\d+])\]/g, function(match, number) {
+       return "end_date["+(parseInt(number)+1)+"]";
+	});
+
+	//alert(newtime)
+
+	$('.eventdatetime').append(newtime);
+});

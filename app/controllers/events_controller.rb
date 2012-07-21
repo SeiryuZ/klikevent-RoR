@@ -40,7 +40,28 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+   
+
     @event = Event.new(params[:event])
+    @category = params[:category][:category_id]
+    @start = params[:start_date]
+    @end =  params[:end_date]
+    e = []
+    c = []
+    @start.keys.each do |key|
+      t1 = DateTime.new(@start[key][:year].to_i, @start[key][:month].to_i, @start[key][:day].to_i, @start[key][:hour].to_i, @start[key][:minute].to_i)
+      t2 = DateTime.new(@end[key][:year].to_i, @end[key][:month].to_i, @end[key][:day].to_i, @end[key][:hour].to_i, @end[key][:min].to_i)
+      e << EventTime.new(:start=>t1, :end =>t2)
+    end
+
+    @category.keys.each do |key|
+      if @category[key] != ""
+        c << Category.find(@category[key])
+      end
+    end
+
+    @event.categories = c
+    @event.event_times = e
 
     respond_to do |format|
       if @event.save
