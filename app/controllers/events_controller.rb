@@ -62,7 +62,7 @@ class EventsController < ApplicationController
 
     @event.categories = c
     @event.event_times = e
-
+    print "#{Rails.root}/config/s3.yml"
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }

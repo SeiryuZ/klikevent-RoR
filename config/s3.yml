@@ -1,3 +1,8 @@
+development:
+ access_key_id: AKIAJEA6B3N5X6YTOOFA
+ secret_access_key: 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
+ bucket: klikevent
+
 production:
  access_key_id: AKIAJEA6B3N5X6YTOOFA
  secret_access_key: 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
