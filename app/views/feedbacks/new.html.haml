@@ -1,0 +1,35 @@
+.row.text-center
+  .span12
+    .tabbable
+      %ul.nav.nav-tabs
+        %li
+          %a{:href=>"#umum", :"data-toggle"=>"tab"}
+            Tips Umum
+        %li
+          %a{:href=>"#event", :"data-toggle"=>"tab"}
+            Tips Event
+        %li
+          %a{:href=>"#feedback", :"data-toggle"=>"tab"}
+            KlikEvent Feedback
+
+.row.add-min-height.add-bottom.text-center
+  .row
+    .tab-content.span8.offset2
+      .section
+      .tab-pane.active#umum
+        %h1 
+          Tips Umum
+        = render 'form_tips'
+      .tab-pane#event
+        %h1 
+          Tips Event
+        = render 'form_event'
+      .tab-pane#feedback
+        %h1
+          KlikEvent Feedback
+        = render 'form_feedback'
+
+
+
+
+

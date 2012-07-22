@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120721192002) do
+ActiveRecord::Schema.define(:version => 20120721235243) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(:version => 20120721192002) do
     t.string   "cover_image_content_type"
     t.integer  "cover_image_file_size"
     t.datetime "cover_image_updated_at"
+  end
+
+  create_table "feedbacks", :force => true do |t|
+    t.string   "nama"
+    t.string   "email"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "subscribers", :force => true do |t|

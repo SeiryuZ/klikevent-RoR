@@ -1,5 +1,7 @@
 Klikevent::Application.routes.draw do
 
+  resources :feedbacks
+
   mount Ckeditor::Engine => '/ckeditor'
 
 
@@ -14,7 +16,7 @@ Klikevent::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 
-  root :to => "events#index"
+  root :to => "events#hot"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,23 @@
+%h1 Listing feedbacks
+
+%table
+  %tr
+    %th Nama
+    %th Email
+    %th Content
+    %th
+    %th
+    %th
+
+  - @feedbacks.each do |feedback|
+    %tr
+      %td= feedback.nama
+      %td= feedback.email
+      %td= feedback.content
+      %td= link_to 'Show', feedback
+      %td= link_to 'Edit', edit_feedback_path(feedback)
+      %td= link_to 'Destroy', feedback, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Feedback', new_feedback_path

@@ -17,7 +17,7 @@
                 .category-bar-item{:class => key.name, :title => key.name}
                   &nbsp;
           .row
-            %h3.description
+            .description
               - event.event_times.each do |event_time|
                 = event_time.start.to_s(:short) << " - "
                 = event_time.end.to_s(:short)

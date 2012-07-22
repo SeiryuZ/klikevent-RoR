@@ -124,10 +124,12 @@ class EventsController < ApplicationController
     print "#{Rails.root}/config/s3.yml"
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        flash[:success] = "Terima kasih atas tips Event nya"
+        flash.keep(:success)
+        format.html { redirect_to :controller=> "feedbacks", :action => "new"}
         format.json { render json: @event, status: :created, location: @event }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to :controller=> "feedbacks", :action => "new" }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end

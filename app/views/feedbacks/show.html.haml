@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Nama:
+  = @feedback.nama
+%p
+  %b Email:
+  = @feedback.email
+%p
+  %b Content:
+  = @feedback.content
+
+= link_to 'Edit', edit_feedback_path(@feedback)
+\|
+= link_to 'Back', feedbacks_path
