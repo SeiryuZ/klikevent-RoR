@@ -8,6 +8,7 @@ class CreateEvents < ActiveRecord::Migration
       t.text :further_info
       t.boolean :hot
       t.boolean :published
+      t.integer :order
 
       t.timestamps
     end

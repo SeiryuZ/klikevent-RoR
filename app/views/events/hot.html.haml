@@ -1,12 +1,14 @@
 %h1.add-bottom Hot Event
 %hr.add-bottom
+- eventCount = 1
 - @events.each do |event|
-  .row.add-bottom
+  .row.add-bottom.event_count{ :class =>"event_count_#{eventCount}", :event_count => eventCount}
+    
     .span12
       .row
         .span6
           = image_tag event.cover_image.url, :class => "image"
-        .span6
+        .span6.event_details{ :id =>"event_details_#{eventCount}"}
           .row
             %a{:href=> event_path(event)}
               %h1.add-bottom 
@@ -27,5 +29,24 @@
             .span6.text-right
               %a{:href=> event_path(event), :class=>"btn btn-large btn-primary"}
                 See Details
+    
   - unless event == @events.last
     %hr
+
+    - content_for :javascript_bottom do
+      :javascript
+        $(window).load(function() {
+            var limit_offset = $('.event_count_#{eventCount+1}').offset().top - $('#event_details_#{eventCount}').height() - 30 
+            
+            $('#event_details_#{eventCount}').scrollToFixed({marginTop:70, limit: limit_offset})
+           
+        });
+  - else
+    - content_for :javascript_bottom do
+      :javascript
+        $(document).ready(function() { 
+          var limit_offset = $('.row-bottom').offset().top - $('#event_details_#{eventCount}').height() - 30 
+          $('#event_details_#{eventCount}').scrollToFixed({marginTop:70,limit: limit_offset});
+        });
+
+  - eventCount += 1

@@ -16,6 +16,10 @@ gem 'paperclip'
 gem 'aws-s3'
 gem 'aws-sdk', '~> 1.3.4'
 
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
