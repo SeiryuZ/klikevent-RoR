@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Klikevent</title>
-  <%= javascript_include_tag "/assets/ckeditor/ckeditor" %>
+  
   <%= stylesheet_link_tag    "application", :media => "all" %>
 
   <%= csrf_meta_tags %>
@@ -137,6 +137,7 @@
     </div>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "jquery-scrolltofixed-min" %>
+    <%= javascript_include_tag "/assets/ckeditor/ckeditor" %>
     <%= yield :javascript_bottom %>
 
 </body>

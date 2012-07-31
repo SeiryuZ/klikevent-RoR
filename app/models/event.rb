@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   has_many :event_times, :through => :event_event_times
   has_many :event_event_times
 
+
+
   has_attached_file :cover_image,
     :storage => :s3, 
     :s3_credentials => "#{Rails.root}/config/s3.yml",

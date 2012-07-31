@@ -3,13 +3,20 @@ class EventsController < ApplicationController
   def hot
 
     @events = []
-    @events << Event.find_by_hot(true, :limit => 5)
-    
+    temp = Event.find( :all, :limit => 5, :conditions => ["hot = ? AND published = ?", true, true])
+     
+    temp.each do |e| 
+      @events << e
+    end
+
     total = @events.count
 
     if total < 5 
       remaining = 5 - total
-      @events << Event.find_by_hot(false, :limit => 5)
+      temp =  Event.find(:all, :limit => 5, :conditions => ["hot = ? AND published = ?", false, true])
+      temp.each  do |e|
+        @events << e
+      end
     end
   end
 
@@ -52,6 +59,19 @@ class EventsController < ApplicationController
     if @events
       @events = @events.uniq
     end
+
+    if request.xhr?
+      render "date.js.coffee"
+    end
+  end
+
+  def calendar
+    @firstdate = Date.new(params[:year].to_i, params[:month].to_i)
+    @lastdate = Date.new(params[:year].to_i, params[:month].to_i, -1)
+    prevMonth = @firstdate - 1.day
+    nextMonth = @lastdate + 1.day
+    @prevMonthLink = "/calendar/"<<prevMonth.month.to_s<<"/"<<prevMonth.year.to_s
+    @nextMonthLink = "/calendar/"<<nextMonth.month.to_s<<"/"<<nextMonth.year.to_s
   end
 
 

@@ -11,6 +11,7 @@ Klikevent::Application.routes.draw do
 
   match "/hot" => "events#hot"
   match "/today" => "events#today"
+  match "/calendar/:month/:year" => "events#calendar"
   match "/date/:date/:month/:year" => "events#date"
 
   resources :subscribers

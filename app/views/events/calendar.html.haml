@@ -1,0 +1,50 @@
+.row
+  %h1 
+    Bulan
+    = @firstdate.strftime('%B %Y') 
+.row.add-bottom
+  .span2
+    %a{:href => @prevMonthLink}
+      %i.icon-chevron-left
+      Previous Month
+  .span2.offset8
+    %a{:href => @nextMonthLink}
+      Next Month
+      %i.icon-chevron-right
+%hr.add-bottom
+.row
+  .span6
+    .calendar-table
+      %table.table.table-condensed.table-striped.text-center
+        %tbody
+          %tr
+            %th Sen
+            %th Sel
+            %th Rab
+            %th Kam
+            %th Jum
+            %th Sab
+            %th Min
+          - day = 1
+          - daycounter = 1
+          - start = false
+          - (1..40).each do
+            - if day <= @lastdate.day
+              - if daycounter % 7 == 1
+                %tr
+              %td
+                .text-center.calendar-grid{:month=>@firstdate.month, :year => @firstdate.year}
+                  - if  daycounter % 7 == @firstdate.wday or start
+                    = day
+                    - start = true
+                    - day += 1
+              -daycounter += 1
+  .span6.event-calendar-date
+    .load
+          
+
+
+
+
+- content_for :javascript_bottom do
+  <%= javascript_include_tag "spin.js" %>

@@ -1,3 +1,22 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.calendar-grid{
+  width: 100%;
+}
+.calendar-grid:hover{
+  background-color: yellow;
+  cursor: hand; cursor: pointer;
+}
+
+.event-calendar-date{
+  height: 500px;
+  position:relative;
+}
+
+.load {
+  position: absolute;
+  top: 150px;
+  left: 375px;
+}
