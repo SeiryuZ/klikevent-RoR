@@ -21,8 +21,8 @@
             = image_tag event.cover_image.url, :class => "image"
           .span6
             .row
-              %a{:href=> event_path(event)}
-                %h1.add-bottom 
+              %h1.add-bottom 
+                %a{:href=> event_path(event)}
                   = event.nama
             .row
               .span6.text-right.category-bar
