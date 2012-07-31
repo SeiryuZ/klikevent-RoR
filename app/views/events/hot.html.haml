@@ -1,5 +1,4 @@
-%h1.add-bottom Hot Event
-%hr.add-bottom
+
 - eventCount = 1
 - @events.each do |event|
   .row.add-bottom.event_count{ :class =>"event_count_#{eventCount}", :event_count => eventCount}
@@ -10,8 +9,8 @@
           = image_tag event.cover_image.url, :class => "image"
         .span6.event_details{ :id =>"event_details_#{eventCount}"}
           .row
-            %a{:href=> event_path(event)}
-              %h1.add-bottom 
+            %h1.add-bottom 
+              %a{:href=> event_path(event)}
                 = event.nama
           .row
             .span6.text-right.category-bar
