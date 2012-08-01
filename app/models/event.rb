@@ -10,9 +10,14 @@ class Event < ActiveRecord::Base
   has_many :users, :through => :joins
   has_many :joins
 
+
   has_attached_file :cover_image,
+    :styles => {
+      :small  => "250x250>",
+      :medium => "450x450>" },
     :storage => :s3, 
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "events/:id/cover.:extension",
     :url  => ":s3_sg_url"
+
 end

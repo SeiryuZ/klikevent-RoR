@@ -17,6 +17,9 @@
               - event.categories.each do |key, value|
                 .category-bar-item{:class => key.name, :title => key.name}
                   &nbsp;
+              %h2.span2.offset2.text-left
+                = event.joins.count
+                Join
           .row.add-bottom
             .description
               - event.event_times.each do |event_time|
@@ -28,7 +31,6 @@
             .span2
               %a{:href=> join_path(event), :class=>"btn btn-large btn-info"}
                 Join Event
-              = event.joins.count
             .span2.offset1.text-right
               %a{:href=> event_path(event), :class=>"btn btn-large btn-primary"}
                 See Details
