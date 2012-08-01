@@ -50,6 +50,8 @@
                         <li class="add-border-left ">
                           <a href="/hot" title="View the Hottest Event around!"><i class="icon-home icon-white "></i>Hot Event</a></li>
                         <li class="add-border-left "><a href="/today" >Today's Event</a></li>
+                        <% d = DateTime.now %>
+                        <li class="add-border-left "><a href="/calendar/<%= d.month%>/<%=d.year%>" >Calendar</a></li>
                         <li class="add-border-left  "><a id="nav" href="/feedbacks/new" title="Got information regarding events? Contact Us!" >Tips &amp; Feedback</a></li>
                         <li class="add-border-left add-border-right "><%= link_to "Subscribe", new_subscriber_path, :id => "nav", :titile=>"Subscribe to Us!"%></li>
                     </ul>
