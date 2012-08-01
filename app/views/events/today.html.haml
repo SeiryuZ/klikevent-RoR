@@ -38,6 +38,7 @@
               .span2
                 %a{:href=> join_path(event), :class=>"btn btn-large btn-info"}
                   Join Event
+                = event.joins.count
               .span2.offset1.text-right
                 %a{:href=> event_path(event), :class=>"btn btn-large btn-primary"}
                   See Details
