@@ -17,7 +17,7 @@
               - event.categories.each do |key, value|
                 .category-bar-item{:class => key.name, :title => key.name}
                   &nbsp;
-          .row
+          .row.add-bottom
             .description
               - event.event_times.each do |event_time|
                 = event_time.start.to_s(:short) << " - "
@@ -25,7 +25,10 @@
                 %br
               = raw event.deskripsi_pendek
           .row
-            .span6.text-right
+            .span2
+              %a{:href=> join_path(event), :class=>"btn btn-large btn-info"}
+                Join Event
+            .span2.offset1.text-right
               %a{:href=> event_path(event), :class=>"btn btn-large btn-primary"}
                 See Details
     

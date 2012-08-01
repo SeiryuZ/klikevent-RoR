@@ -1,18 +1,20 @@
 Klikevent::Application.routes.draw do
 
   ActiveAdmin.routes(self)
+  mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :feedbacks
 
-  mount Ckeditor::Engine => '/ckeditor'
+  
 
 
   match "/hot" => "events#hot"
   match "/today" => "events#today"
   match "/calendar/:month/:year" => "events#calendar"
   match "/date/:date/:month/:year" => "events#date"
+  match "/join/:id" => "events#join", :as => "join"
 
   resources :subscribers
 

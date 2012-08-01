@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :image
   attr_accessible :provider, :uid
 
+  has_many :events, :through => :joins
+  has_many :joins
+
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
   	image =  auth.info.image

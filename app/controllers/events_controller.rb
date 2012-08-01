@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   
   def hot
-
+    session[:return_to] = "/hot"
     @events = []
     temp = Event.find( :all, :limit => 5, :conditions => ["hot = ? AND published = ?", true, true])
      
@@ -182,4 +182,18 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def join 
+    if user_signed_in?
+      e = Event.find(params[:id])
+      current_user.events << e
+      redirect_to :action => "hot"
+    else
+      flash[:notice] = "Anda Harus Login Terlebih dahulu"
+      flash.keep(:notice)
+      redirect_to :action => "hot"
+    end
+  end
+
 end

@@ -7,7 +7,8 @@ class Event < ActiveRecord::Base
   has_many :event_times, :through => :event_event_times
   has_many :event_event_times
 
-
+  has_many :users, :through => :joins
+  has_many :joins
 
   has_attached_file :cover_image,
     :storage => :s3, 
