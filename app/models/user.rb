@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :image
-  attr_accessible :provider, :uid
+  attr_accessible :provider, :uid, :partner 
 
   has_many :events, :through => :joins
   has_many :joins

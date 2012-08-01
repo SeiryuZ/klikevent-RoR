@@ -1,0 +1,51 @@
+= form_tag url_for(partner_create_event_path), :method=> :post ,  :multipart => true do
+  -if @event.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+      %ul
+        - @event.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = label :event, :nama
+    = text_area :event, :nama
+  .field
+    = label :event, :lokasi
+    = text_area :event, :lokasi
+  .field
+    = label :event, :deskripsi_pendek
+    = cktext_area_tag("event_deskripsi_pendek", "", :input_html => {:class => "deskripsi_pendek", :name => "event[deskripsi_pendek]"})
+  .field
+    = label :event, :deskripsi
+    = cktext_area_tag("event_deskripsi", "", :input_html => {:class => "deskripsi", :name => "event[deskripsi]"})
+
+  .field
+    = label :event, :category
+    = select("category", "category_id[0]", Category.all.collect {|c| [c.name , c.id ] }, {:prompt => 'Pilih Kategori'})
+    %br
+    = select("category", "category_id[1]", Category.all.collect {|c| [c.name , c.id ] }, {:prompt => 'Pilih Kategori'})
+    %br
+    = select("category", "category_id[2]", Category.all.collect {|c| [c.name , c.id ] }, {:prompt => 'Pilih Kategori'})
+
+  = label :event, :waktu_event
+  .field.eventdatetime
+    Start
+    = select_datetime Time.now, :prefix => "start_date[0]" 
+    &nbsp;End
+    = select_datetime Time.now, :prefix => "end_date[0]"  
+    %br
+  %a#add-time.btn.btn-primary Tambah Waktu
+  .field
+    = label :event, :cover_image
+    = file_field :event, :cover_image
+
+
+  
+
+
+
+  %br
+  %br
+
+  .actions
+    = button_tag 'Save'

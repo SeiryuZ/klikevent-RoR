@@ -59,11 +59,20 @@
                         <li class="dropdown ">
                           <% if user_signed_in? %>
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <%= image_tag(current_user.image, :size => "40x40")%> <%= current_user.name %>
+                            <%= image_tag(current_user.image, :size => "40x40")%> <%= current_user.name %> <% if current_user.partner %> (Partner) <% end %>
                             <b class=" caret caret-custom"></b>
                           </a>
+                          
+                          
                             <ul class="dropdown-menu">
-                                <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>    </li>
+                              <% if current_user.partner %>
+                              <li>
+                                <a href="<%= url_for partner_new_event_path%>">
+                                  Post Event
+                                </a>
+                              </li>
+                              <% end %>
+                              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>    </li>
                             </ul>
            
      <% else %>

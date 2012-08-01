@@ -141,7 +141,7 @@ class EventsController < ApplicationController
 
     @event.categories = c
     @event.event_times = e
-    print "#{Rails.root}/config/s3.yml"
+ 
     respond_to do |format|
       if @event.save
         flash[:success] = "Terima kasih atas tips Event nya"
@@ -193,6 +193,44 @@ class EventsController < ApplicationController
       flash[:notice] = "Anda Harus Login Terlebih dahulu"
       flash.keep(:notice)
       redirect_to :action => "hot"
+    end
+  end
+
+  def partner_new
+    @event = Event.new
+  end
+  def partner_create
+    @event = Event.new(params[:event])
+    @event.hot = false
+    @event.published = false
+    @category = params[:category][:category_id]
+    @start = params[:start_date]
+    @end =  params[:end_date]
+    e = []
+    c = []
+    @start.keys.each do |key|
+      t1 = DateTime.new(@start[key][:year].to_i, @start[key][:month].to_i, @start[key][:day].to_i, @start[key][:hour].to_i, @start[key][:minute].to_i)
+      t2 = DateTime.new(@end[key][:year].to_i, @end[key][:month].to_i, @end[key][:day].to_i, @end[key][:hour].to_i, @end[key][:min].to_i)
+      e << EventTime.new(:start=>t1, :end =>t2)
+    end
+
+    @category.keys.each do |key|
+      if @category[key] != ""
+        c << Category.find(@category[key])
+      end
+    end
+
+    @event.categories = c
+    @event.event_times = e
+ 
+    respond_to do |format|
+      if @event.save
+        flash[:success] = "Terima Kasih, Event Telah di Submit. Event akan di approve oleh admin"
+        flash.keep(:success)
+        format.html { redirect_to :action=> "partner_new"}
+      else
+        format.html { render action: "partner_new" }
+      end
     end
   end
 

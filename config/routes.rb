@@ -15,6 +15,8 @@ Klikevent::Application.routes.draw do
   match "/calendar/:month/:year" => "events#calendar"
   match "/date/:date/:month/:year" => "events#date"
   match "/join/:id" => "events#join", :as => "join"
+  match "/events/partner/new" =>  "events#partner_new", :as => "partner_new_event"
+  match "/events/partner/create" =>  "events#partner_create", :as => "partner_create_event"
 
   resources :subscribers
 
