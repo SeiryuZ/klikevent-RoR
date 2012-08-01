@@ -187,7 +187,9 @@ class EventsController < ApplicationController
   def join 
     if user_signed_in?
       e = Event.find(params[:id])
-      current_user.events << e
+      if not current_user.events.include? e
+        current_user.events << e
+      end
       redirect_to :action => "hot"
     else
       flash[:notice] = "Anda Harus Login Terlebih dahulu"
