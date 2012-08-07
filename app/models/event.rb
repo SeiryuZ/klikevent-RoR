@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :deskripsi, :deskripsi_pendek, :lokasi, :nama, :cover_image, :hot, :published, :further_info, :order
+  attr_accessible :deskripsi, :deskripsi_pendek, :lokasi, :nama, :cover_image, :hot, :published, :further_info, :order, :slug
 
   has_many :categories, :through => :event_categories
   has_many :event_categories
@@ -10,6 +10,7 @@ class Event < ActiveRecord::Base
   has_many :users, :through => :joins
   has_many :joins
 
+  before_save :generate_slug
 
   has_attached_file :cover_image,
     :styles => {
@@ -19,5 +20,15 @@ class Event < ActiveRecord::Base
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "events/:id/cover.:extension",
     :url  => ":s3_sg_url"
+
+  def to_param
+    # Use another column instead of the primary key 'id':
+    "#{self.id}-#{self.nama.parameterize}"
+  end
+
+  private
+    def generate_slug
+      self.slug = self.nama.parameterize
+    end
 
 end
