@@ -120,7 +120,10 @@ class EventsController < ApplicationController
     
 
 
-    @event = Event.new(params[:event])
+    @event = Event.new
+    
+    @event.assign_attributes(params[:event])
+
     @event.hot = false
     @event.published = false
     @category = params[:category][:category_id]

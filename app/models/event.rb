@@ -12,6 +12,9 @@ class Event < ActiveRecord::Base
 
 
   has_attached_file :cover_image,
+    :styles => {
+      :small  => "250x250>",
+      :medium => "450x450>" },
     :storage => :s3, 
     :s3_credentials => "#{Rails.root}/config/s3.yml",
     :path => "events/:id/cover.:extension",

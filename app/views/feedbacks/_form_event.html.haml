@@ -30,9 +30,9 @@
   = f.label :waktu_event
   .field.eventdatetime
     Start
-    = select_datetime Time.now, :prefix => "start_date[0]" 
+    = select_datetime Time.now, :prefix => "start_date[0]",:use_short_month => true, :order => [:day, :month, :year]
     &nbsp;End
-    = select_datetime Time.now, :prefix => "end_date[0]"  
+    = select_datetime Time.now, :prefix => "end_date[0]" ,:use_short_month => true, :order => [:day, :month, :year]
     %br
   %a#add-time.btn.btn-primary Tambah Waktu
   .field

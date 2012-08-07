@@ -12,7 +12,8 @@ gem 'haml-rails', '>= 0.3.4'
 gem 'thin' 
 gem 'valid_email'
 gem "ckeditor", "3.7.1"
-gem 'paperclip'
+gem "rmagick", "2.12.0", :require => 'RMagick'
+gem "paperclip", :git => 'git://github.com/thoughtbot/paperclip.git', :branch => "master"
 gem 'aws-s3'
 gem 'aws-sdk', '~> 1.3.4'
 
