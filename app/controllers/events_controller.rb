@@ -117,7 +117,8 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-   
+    
+
 
     @event = Event.new(params[:event])
     @event.hot = false
@@ -141,16 +142,22 @@ class EventsController < ApplicationController
 
     @event.categories = c
     @event.event_times = e
- 
-    respond_to do |format|
-      if @event.save
-        flash[:success] = "Terima kasih atas tips Event nya"
-        flash.keep(:success)
-        format.html { redirect_to :controller=> "feedbacks", :action => "new"}
-        format.json { render json: @event, status: :created, location: @event }
-      else
-        format.html { redirect_to :controller=> "feedbacks", :action => "new" }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+  
+    if current_user == nil
+      flash[:error] = "Anda Harus Login Terlebih Dahulu"
+      flash.keep(:error)
+      redirect_to :controller=> "feedbacks", :action => "new"
+    else
+      respond_to do |format|
+        if @event.save
+          flash[:success] = "Terima kasih atas tips Event nya"
+          flash.keep(:success)
+          format.html { redirect_to :controller=> "feedbacks", :action => "new"}
+          format.json { render json: @event, status: :created, location: @event }
+        else
+          format.html { redirect_to :controller=> "feedbacks", :action => "new" }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

@@ -38,7 +38,9 @@
   .field
     = f.label :cover_image
     = f.file_field :cover_image
-
+  .field
+    = f.label :further_info
+    = cktext_area_tag("event_further_info", "", :input_html => {:class => "further_info", :name => "event[further_info]"})
 
   
 

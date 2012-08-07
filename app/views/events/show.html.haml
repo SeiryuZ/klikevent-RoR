@@ -29,7 +29,7 @@
         .row
           .span8
             %strong
-              Tanggal: 
+              Tanggal
               %br
             - @event.event_times.each do |event_time|
               = event_time.start.to_s(:short) << " - "
@@ -39,21 +39,21 @@
         .row
           .span8
             %strong
-              Lokasi : 
+              Lokasi 
             %br
             = @event.lokasi
         %hr
         .row
           .span8
             %strong
-              Deskripsi : 
+              Deskripsi 
             %br
             = raw @event.deskripsi
         %hr
         .row
           .span8
             %strong
-              Further Info : 
+              Further Info  
             %br
             = raw @event.further_info
       .tab-pane{:id=>"images"}

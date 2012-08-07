@@ -90,6 +90,7 @@
         <div class="row add-min-height">
       <% if flash[:success] %><div class="alert alert-success"><button class="close" data-dismiss="alert">×</button><%= flash[:success] %></div><% end %>
       <% if flash[:notice] %><div class="alert"><button class="close" data-dismiss="alert">×</button><%= flash[:notice] %></div><% end %>
+      <% if flash[:error] %><div class="alert alert-error"><button class="close" data-dismiss="alert">×</button><%= flash[:error] %></div><% end %>
       <% if flash[:alert] %><div class="alert"><button class="close" data-dismiss="alert">×</button><%= flash[:alert] %></div> <% end %>
 <%= yield %>
       
