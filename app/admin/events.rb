@@ -1,12 +1,15 @@
 ActiveAdmin.register Event do
 
   index do
-    column :id
+    column :id do |event|
+      link_to event.id, admin_event_path(event)
+    end
     column :nama
     column :lokasi
     column :hot
     column :published
     column :uploader
+    default_actions
   end
 
   form :html => { :enctype => "multipart/form-data" } do |f|
