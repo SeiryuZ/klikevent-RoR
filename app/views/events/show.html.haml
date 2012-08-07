@@ -40,20 +40,22 @@
           .span8
             %strong
               Lokasi : 
-              %br
-              = @event.lokasi
+            %br
+            = @event.lokasi
         %hr
         .row
           .span8
             %strong
               Deskripsi : 
-              = raw @event.deskripsi
+            %br
+            = raw @event.deskripsi
         %hr
         .row
           .span8
             %strong
               Further Info : 
-              = raw @event.further_info
+            %br
+            = raw @event.further_info
       .tab-pane{:id=>"images"}
 
 
