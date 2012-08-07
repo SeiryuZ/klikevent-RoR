@@ -10,7 +10,11 @@ ActiveAdmin.register Event do
       f.input :hot
       f.input :published
     end
-
+    f.inputs "Kategori Event" do
+      f.has_many :event_categories do |c|
+        c.input :category_id, :as => :select, :collection => Hash[Category.all.map{|col| [col.name,col.id]}]
+      end
+    end
     f.inputs "Waktu Event" do
       f.has_many :event_times do |e|
         e.input :start

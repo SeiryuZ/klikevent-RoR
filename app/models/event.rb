@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :deskripsi, :deskripsi_pendek, :lokasi, :nama, :cover_image, :hot, :published, :further_info, :order,:event_times_attributes
+  attr_accessible :deskripsi, :deskripsi_pendek, :lokasi, :nama, :cover_image, :hot, :published, :further_info, :order,:event_times_attributes,:event_categories_attributes
 
   has_many :categories, :through => :event_categories
   has_many :event_categories
@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
   has_many :users, :through => :joins
   has_many :joins
 
-  accepts_nested_attributes_for :categories, :event_times
+  accepts_nested_attributes_for :event_categories, :event_times
 
   has_attached_file :cover_image,
     :styles => {
