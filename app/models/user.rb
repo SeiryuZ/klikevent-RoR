@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :image
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :image, :admin
   attr_accessible :provider, :uid, :partner 
 
   has_many :events, :through => :joins
