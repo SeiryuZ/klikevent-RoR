@@ -21,6 +21,9 @@ class Event < ActiveRecord::Base
     :path => "events/:id/cover.:extension",
     :url  => ":s3_sg_url"
 
+
+  validates :nama, :lokasi, :deskripsi_pendek, :deskripsi, :presence=>{:message =>"tidak boleh kososng"}
+
   def to_param
     # Use another column instead of the primary key 'id':
     "#{self.id}-#{self.nama.parameterize}"
