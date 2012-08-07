@@ -20,4 +20,10 @@ class Event < ActiveRecord::Base
     :path => "events/:id/cover.:extension",
     :url  => ":s3_sg_url"
 
+  def to_param
+    # Use another column instead of the primary key 'id':
+    "#{self.id}-#{self.nama.parameterize}"
+  end
+
+
 end
