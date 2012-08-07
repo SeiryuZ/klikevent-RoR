@@ -1,11 +1,21 @@
 ActiveAdmin.register Event do
+
+  index do
+    column :id
+    column :nama
+    column :lokasi
+    column :hot
+    column :published
+    column :uploader
+  end
+
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "Details" do
       f.input :nama
       f.input :lokasi
-      f.input :deskripsi_pendek
-      f.input :deskripsi
-      f.input :further_info
+      f.input :deskripsi_pendek, :input_html => { :class => "ckeditor" }
+      f.input :deskripsi, :input_html => { :class => "ckeditor" }
+      f.input :further_info, :as => :ckeditor
       f.input :cover_image, :as => :file, :hint => f.template.image_tag(f.object.cover_image.url(:medium))
       f.input :hot
       f.input :published
