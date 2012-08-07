@@ -22,6 +22,7 @@ class EventsController < ApplicationController
 
   def today 
     @date = DateTime.now
+    @date = DateTime.new(@date.beginning_of_day.year, @date.beginning_of_day.month, @date.beginning_of_day.day)
     prevDate = @date - 1.day
     nextDate = @date + 1.day
     @prevDateLink = "/date/"<<prevDate.day.to_s<<"/"<<prevDate.month.to_s<<"/"<<prevDate.year.to_s
