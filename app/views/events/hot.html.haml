@@ -6,7 +6,7 @@
     .span12
       .row
         .span6
-          = image_tag event.cover_image.url(:small), :class => "image"
+          = image_tag event.cover_image.url(:medium), :class => "image"
         .span6.event_details{ :id =>"event_details_#{eventCount}"}
           .row
             %h1.add-bottom 

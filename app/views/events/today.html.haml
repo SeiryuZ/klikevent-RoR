@@ -16,7 +16,7 @@
       .span12
         .row
           .span6
-            = image_tag event.cover_image.url, :class => "image"
+            = image_tag event.cover_image.url(:medium), :class => "image"
           .span6
             .row
               %h1.add-bottom.today-title

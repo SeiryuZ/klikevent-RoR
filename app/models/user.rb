@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :events, :through => :joins
   has_many :joins
 
+  has_many :uploaded_events, :class_name => 'Event', :foreign_key => 'uploader_id'
+
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
   	image =  auth.info.image
