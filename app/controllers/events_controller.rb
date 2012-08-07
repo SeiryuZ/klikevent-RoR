@@ -124,7 +124,7 @@ class EventsController < ApplicationController
     @event = Event.new
     
     @event.assign_attributes(params[:event])
-
+    @event.uploader = current_user
     @event.hot = false
     @event.published = false
     @category = params[:category][:category_id]
@@ -170,7 +170,6 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
-
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }

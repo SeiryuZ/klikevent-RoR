@@ -24,4 +24,29 @@ ActiveAdmin.register Event do
 
     f.buttons
   end
+
+
+  controller do
+    # This code is evaluated within the controller class
+    def create
+      @event = Event.create(params[:event])
+      @event.uploader = current_user
+      if @event.save
+        flash[:notice] = "Event added!"
+        redirect_to :action => :index
+      else
+        redirect_to :action => :new
+      end
+    end
+    def update
+      @event = Event.find(params[:id])
+      @event.assign_attributes(params[:event])
+      @event.uploader = current_user
+      if @event.save
+        redirect_to :action => :show
+      else
+        render action: "edit" 
+      end
+    end
+  end
 end
