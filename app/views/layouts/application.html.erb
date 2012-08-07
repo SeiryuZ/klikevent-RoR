@@ -72,6 +72,13 @@
                                 </a>
                               </li>
                               <% end %>
+                              <% if current_user.admin %>
+                              <li>
+                                <a href="<%= url_for admin_dashboard_path%>">
+                                  Admin Page
+                                </a>
+                              </li>
+                              <% end %>
                               <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>    </li>
                             </ul>
            
