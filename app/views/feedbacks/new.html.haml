@@ -3,9 +3,6 @@
     .tabbable
       %ul.nav.nav-tabs
         %li
-          %a{:href=>"#umum", :"data-toggle"=>"tab"}
-            Tips Umum
-        %li
           %a{:href=>"#event", :"data-toggle"=>"tab"}
             Tips Event
         %li
@@ -16,11 +13,7 @@
   .row
     .tab-content.span8.offset2
       .section
-      .tab-pane.active#umum
-        %h1 
-          Tips Umum
-        = render 'form_tips'
-      .tab-pane#event
+      .tab-pane.active#event
         %h1 
           Tips Event
         = render 'form_event'

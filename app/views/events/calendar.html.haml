@@ -32,12 +32,29 @@
             - if day <= @lastdate.day
               - if daycounter % 7 == 1
                 %tr
-              %td
-                .text-center.calendar-grid{:month=>@firstdate.month, :year => @firstdate.year}
-                  - if  daycounter % 7 == @firstdate.wday or start
-                    = day
-                    - start = true
-                    - day += 1
+              - if daycounter % 7 == 6
+                %td.saturday
+                  .text-center.calendar-grid{:month=>@firstdate.month, :year => @firstdate.year}
+                    - if  daycounter % 7 == @firstdate.wday or start
+                      = day
+                      - start = true
+                      - day += 1
+              -else
+                -if daycounter %7 == 0
+                  %td.sunday
+                    .text-center.calendar-grid{:month=>@firstdate.month, :year => @firstdate.year}
+                      - if  daycounter % 7 == @firstdate.wday or start
+                        = day
+                        - start = true
+                        - day += 1
+                -else
+                  %td
+                    .text-center.calendar-grid{:month=>@firstdate.month, :year => @firstdate.year}
+                      - if  daycounter % 7 == @firstdate.wday or start
+                        = day
+                        - start = true
+                        - day += 1
+              
               -daycounter += 1
   .span6.event-calendar-date
     .load

@@ -8,6 +8,15 @@ $(window).load( ->
 
     $('.calendar-grid').live('click', ->
       spinner = new Spinner().spin();
+
+      
+
+      $('.calendar-grid').each(->
+        $(this).removeClass('selected-date');
+      )
+
+      $(this).addClass('selected-date')
+      
       $('.load').append(spinner.el);
       
       

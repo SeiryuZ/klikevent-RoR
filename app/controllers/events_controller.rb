@@ -42,6 +42,13 @@ class EventsController < ApplicationController
 
   end
 
+  def category
+    @date = DateTime.now
+    @date = DateTime.new(@date.beginning_of_day.year, @date.beginning_of_day.month, @date.beginning_of_day.day)
+    category = Category.find(:all, :conditions => ['lower(name) = ?', params[:name].downcase])
+    @events = Event.where('start > ? AND categories  = ', @date.beginning_of_day)
+  end
+
   def date
     @date = DateTime.new(params[:year].to_i, params[:month].to_i, params[:date].to_i)
     prevDate = @date - 1.day
