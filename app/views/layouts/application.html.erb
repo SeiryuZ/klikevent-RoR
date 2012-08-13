@@ -20,7 +20,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <%= link_to "Klikevent", root_path, :class=>"brand" %>
+                <a href="<%= url_for root_path %>" class="brand">
+                  <%= image_tag('logo.jpg', :size =>"45x45") %> Klikevent
+                </a>
+      
 
                 <span class="divider"></span>
       
@@ -85,14 +88,14 @@
       <div class="row text-left row-bottom">
           <div class="span3">
               <p><strong>Categories</strong><p>
-              <a href="#"><p>Paid</p></a>
-              <a href="#"><p>Free</p></a>
-              <a href="#"><p>Day</p></a>
-              <a href="#"><p>Night</p></a>
-              <a href="#"><p>Art &amp; Hobbies</p></a>
-              <a href="#"><p>Exhibition</p></a>
-              <a href="#"><p>Education</p></a>
-              <a href="#"><p>Others</p></a>
+              <a href="<%= url_for event_category_path(:name=> "paid") %>"><p>Paid</p></a>
+              <a href="<%= url_for event_category_path(:name=> "free") %>"><p>Free</p></a>
+              <a href="<%= url_for event_category_path(:name=> "Day") %>"><p>Day</p></a>
+              <a href="<%= url_for event_category_path(:name=> "night") %>"><p>Night</p></a>
+              <a href="<%= url_for event_category_path(:name=> "art & hobbies") %>"><p>Art &amp; Hobbies</p></a>
+              <a href="<%= url_for event_category_path(:name=> "exhibition") %>"><p>Exhibition</p></a>
+              <a href="<%= url_for event_category_path(:name=> "education") %>"><p>Education</p></a>
+              <a href="<%= url_for event_category_path(:name=> "others") %>"><p>Others</p></a>
           </div>
           <div class="span3">
               <p><strong>About</strong><p>

@@ -12,7 +12,7 @@ Klikevent::Application.routes.draw do
 
   match "/hot" => "events#hot"
   match "/today" => "events#today"
-  match "/events/category/:name" => "events#category"
+  match "/events/category/:name" => "events#category", :as=> "event_category"
   match "/calendar/:month/:year" => "events#calendar"
   match "/date/:date/:month/:year" => "events#date"
   match "/join/:id" => "events#join", :as => "join"

@@ -45,8 +45,10 @@ class EventsController < ApplicationController
   def category
     @date = DateTime.now
     @date = DateTime.new(@date.beginning_of_day.year, @date.beginning_of_day.month, @date.beginning_of_day.day)
-    category = Category.find(:all, :conditions => ['lower(name) = ?', params[:name].downcase])
-    @events = Event.where('start > ? AND categories  = ', @date.beginning_of_day)
+    @events = Event.find( :all, 
+      :joins => [:categories, :event_times], 
+      :conditions => ['lower(categories.name) = ? and event_times.start > ?' , params[:name].downcase, @date ] )
+    render "hot.html.haml"
   end
 
   def date
